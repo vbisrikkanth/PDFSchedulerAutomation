@@ -1,0 +1,45 @@
+const { I } = inject();
+
+const loginPage = require('../../pages/loginPage');
+const { appURL } = require('../../pages/appURL');
+const log = require('../../config/logging').default;
+const { event } = require('codeceptjs');
+const { config } = require('../../codecept.conf');
+
+if (process.env.NODE_ENV !== 'production') {
+    const dotenv = require('dotenv')
+    dotenv.config()
+}
+
+Feature("<<Feature>>");
+BeforeSuite(async ({ I }) => {
+    log.info('=============Feature: <<Feature>> =============');
+    I.say('I navigate to application base URL');    
+    I.loginToPowerBI(process.env.PRO_USER,process.env.PRO_PASSWORD); 
+    I.amOnPage(appURL.XPS_SANITY_URL);
+    I.waitForVisible(loginPage.iFrame, process.env.WAIT_LONG);
+    I.resizeWindow('maximize','maximize');    
+    I.click(loginPage.moreOptions)
+    I.click(locate(loginPage.editOption).withText('Edit'))
+    I.switchTo(loginPage.iFrame);    
+})
+
+Before( ({I})=>{
+    log.info('Test Started ....  ');
+    
+    })
+After(({I})=>{
+        log.info('Test Ended ....  ');
+    })
+	
+	var TestName;
+    var FeatureName;
+  
+   
+    event.dispatcher.on(event.test.before, async (test) => {
+        TestName=test.title;
+       })
+    
+    event.dispatcher.on(event.suite.before, async (suite) => {
+        FeatureName = suite.title;
+    })

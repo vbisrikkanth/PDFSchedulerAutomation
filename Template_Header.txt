@@ -1,0 +1,54 @@
+const { I } = inject();
+
+const loginPage = require('../../pages/loginPage');
+const { appURL } = require('../../pages/appURL');
+const log = require('../../config/logging').default;
+const { event } = require('codeceptjs');
+const { config } = require('../../codecept.conf');
+const toolBar = require("../../pages/toolBar");
+
+const homePage = require('../../pages/homePage');
+const cellLevel = require('../../steps_cellLevel');
+const rowLevel = require('../../steps_rowLevel');
+const columnLevel = require('../../steps_columnLevel');
+
+
+if (process.env.NODE_ENV !== 'production') {
+    const dotenv = require('dotenv')
+    dotenv.config()
+}
+
+Feature("<<Feature>>");
+//Use the below for PowerBI - Inforiver version
+
+ BeforeSuite(async ({ I }) => {
+   
+    
+}) 
+
+
+AfterSuite(async ({ I }) => {
+  
+});
+
+Before( async ({I})=>{
+     log.info('=============Feature: <<Feature>> =============');
+	 await I.loginApp(); 
+    
+    })
+After(async ({I})=>{
+	await I.gotoMainWindow();
+       
+    })
+    
+    var TestName;
+    var FeatureName;
+  
+   
+    event.dispatcher.on(event.test.before, async (test) => {
+        TestName=test.title;
+       })
+    
+    event.dispatcher.on(event.suite.before, async (suite) => {
+        FeatureName = suite.title;
+    })

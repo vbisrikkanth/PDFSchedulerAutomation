@@ -1,0 +1,22 @@
+{
+    "appenders": {
+    "console" : {
+        "type": "console",
+        "category": "console"
+    },
+    
+    "file" : {
+        "category": "test-file-appender",
+        "type": "file",
+        "filename": "log/xvizPerformanceSuite.log",
+        "maxLogSize": 20971520,
+        "backups": 3,
+        "flag" : "a",
+        "pattern":"%d %p %c %x{user} %m%n"
+    }
+    },
+    "categories": {
+        "default" :{"appenders": ["console", "file"], "level": "DEBUG"},
+        "file" : {"appenders": ["file"], "level": "DEBUG"}
+    }
+}

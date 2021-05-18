@@ -1,0 +1,70 @@
+const { I } = inject();
+
+const loginPage = require('../../pages/loginPage');
+const { appURL } = require('../../pages/appURL');
+const log = require('../../config/logging').default;
+const { event } = require('codeceptjs');
+const { config } = require('../../codecept.conf');
+const toolBar = require("../../pages/toolBar");
+
+const homePage = require('../../pages/homePage');
+const cellLevel = require('../../steps_cellLevel');
+const rowLevel = require('../../steps_rowLevel');
+const columnLevel = require('../../steps_columnLevel');
+
+
+if (process.env.NODE_ENV !== 'production') {
+    const dotenv = require('dotenv')
+    dotenv.config()
+}
+
+Feature("<<Feature>>");
+//Use the below for PowerBI - Inforiver version
+
+ BeforeSuite(async ({ I }) => {
+
+    log.info('=============Feature: <<Feature>> =============');
+    I.say('I navigate to application base URL');   
+    if(process.env.MODE==='PowerBI') 
+    {
+        I.loginToPowerBI(process.env.PRO_USER,process.env.PRO_PASSWORD); 
+        I.amOnPage(appURL.XPS_SANITY_URL);
+        I.waitForVisible(loginPage.iFrame, process.env.WAIT_LONG);
+        I.resizeWindow('maximize','maximize');  
+        I.wait(10);
+        I.click(loginPage.moreOptions);
+      // I.click(locate(loginPage.editOption).withText('Edit'))
+        I.click(locate(loginPage.editOption));
+        I.wait(10);
+        I.switchTo(loginPage.iFrame);
+    }
+    else if(process.env.MODE==='Normal')
+    {
+      I.amOnPage(process.env.BASE_URL)
+      I.waitForVisible(toolBar.HomeTab.Style.italic, process.env.WAIT_LONG);
+      I.resizeWindow('maximize','maximize');    
+    }
+    
+}) 
+
+
+Before( ({I})=>{
+  
+    
+    })
+After(({I})=>{
+   
+       
+    })
+    
+    var TestName;
+    var FeatureName;
+  
+   
+    event.dispatcher.on(event.test.before, async (test) => {
+        TestName=test.title;
+       })
+    
+    event.dispatcher.on(event.suite.before, async (suite) => {
+        FeatureName = suite.title;
+    })

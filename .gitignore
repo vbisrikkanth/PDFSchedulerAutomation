@@ -1,0 +1,9 @@
+node_modules
+screenshots/*
+allure/allure-results/*.png
+allure/allure-results/*.xml
+.env
+log
+outputs
+!allure/allure-results/environment.xml
+!screenshots/base
