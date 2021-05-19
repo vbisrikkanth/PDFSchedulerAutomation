@@ -28,6 +28,8 @@ module.exports = function () {
       await this.amOnPage(process.env.BASE_URL);
       await this.wait(10);
       await this.waitForText('Sign in with Microsoft');
+       
+
       await this.click('//span[contains(text(),"Sign in with Microsoft")]');    
       await this.wait(5);
       await this.switchToNextTab();
@@ -41,7 +43,7 @@ module.exports = function () {
       await this.click('Next');
       await this.wait(5);
       await this.waitForVisible('//input[@type="password"]',process.env.WAIT_LONG);
-      await this.fillField('//input[@type="password"]',process.env.ADMIN_PASSWORD);
+      await this.fillField('//input[@type="password"]',secret(process.env.ADMIN_PASSWORD));
       await this.click('Sign in');
       await this.wait(5);
       await this.click('Yes');
