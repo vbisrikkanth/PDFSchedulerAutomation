@@ -34,12 +34,12 @@ class MyPlaywright extends Helper {
     const { page } = this.helpers.Playwright;
     await page.click('text=Add');
   }
-  async capturescreenshot(filename)
+ /*  async capturescreenshot(filename)
   {
     const { page } = this.helpers.Playwright;
     await page.screenshot({ path: filename })
 
-  }
+  } */
 }
 
 module.exports = MyPlaywright;

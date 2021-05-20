@@ -88,6 +88,7 @@ exports.config = {
   include: {
     I: './steps_file.js',    
     loginPage: "./pages/loginPage.js",  
+    schedulesPage: "./pages/schedulesPage.js",  
     appURL: "./pages/appURL.js",
     toolBar: "./pages/toolBar.js",
     matrixContent: './pages/matrixContent.js',

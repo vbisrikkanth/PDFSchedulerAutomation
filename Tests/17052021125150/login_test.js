@@ -3,14 +3,11 @@ const log = require('../../config/logging').default;
 const allure = codeceptjs.container.plugins('allure');
 const fs = require('fs');
 const path =require('path');
+
 Feature('login');
 
 BeforeSuite(async ({ I }) => {
-   /*  log.info('=============Feature: login =============');
-    session('adminmode', async() => {
-        await I.loginInPDFScheduler();
-     }); */
-    
+  
 }) 
 
 
@@ -42,13 +39,16 @@ After(async ({I})=>{
 
 Scenario('test something', async({ I }) => {
     session('adminmode',async () => {
-        await I.loginInPDFScheduler();      
-        let filename='BulkUpload.png';
-        
+        await I.loginInPDFScheduler(); 
+        await I.addNewSchedule();        
+        pause(); 
+        /* 
+            let filename='BulkUpload.png';
         const cwd = process.cwd();
         const filePathAttachment = path.join(cwd, '/output/', filename);
         await I.say(filePathAttachment);
         await I.saveScreenshot(filename,true);
+        
         var bufferData = await fs.readFileSync(filePathAttachment);
         await allure.addAttachment(filename,bufferData,'image/png');
 
@@ -62,14 +62,12 @@ Scenario('test something', async({ I }) => {
         await I.click('//div[contains(text(),"+ Add Bulk Recipient")]');
        
         await I.wait(5);        
-        //await I.click('//div//p[contains(text(),"upload")]'); 
-        //await I.fileupload();
         
         //Will work for only Input element File Upload
         await I.attachFile('//input[@type="file"]','./abc.csv');
         await I.wait(5);
         
-        await I.clickbutton();
+        await I.clickbutton(); */
         //pause();        
     });
 
