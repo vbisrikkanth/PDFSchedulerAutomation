@@ -1,14 +1,9 @@
 // in this file you can append custom step methods to 'I' object
-const toolBar = require("./pages/toolBar");
 const assert = require('codeceptjs-assert');
 const log = require('./config/logging').default;
 const { helper } = require("codeceptjs");
 //Below 2 lines added for POC by Saravana 
-const { cells } = require('./pages/matrixContent');
-const { rows } = require('./pages/matrixContent');
 const allure = codeceptjs.container.plugins('allure');
-const { appURL } = require('./pages/appURL');
-const { loginToPowerBI } = require("./pages/loginPage");
 const loginPage = require('./pages/loginPage');
 const schedulePage = require('./pages/schedulesPage');
 const fs = require('fs');
@@ -41,6 +36,9 @@ module.exports = function () {
       var bufferData = await fs.readFileSync(filePathAttachment);
       await allure.addAttachment(filename,bufferData,'image/png'); 
      },
-  });
+     async demoforcodecept(){
+       
+     }  
+    });
 
 }

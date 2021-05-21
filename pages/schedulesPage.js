@@ -6,7 +6,7 @@ module.exports = {
   editschedulename: '//h2[text()="Untitled"]//parent::div//following-sibling::div/div[@class="cursor-pointer"]',
   inputschedulename: '//input[@placeholder="Schedule Name"]',
   startcalendar: '//div[@title="Start Date Calendar"]',
-  dateinput: '//abbr[@aria-label="May 20, 2021"]',
+  dateinput: '//abbr[@aria-label="May 22, 2021"]',
   addbulkrecipient: '//div[contains(text(),"+ Add Bulk Recipient")]',
   fileinput: '//input[@type="file"]',
 

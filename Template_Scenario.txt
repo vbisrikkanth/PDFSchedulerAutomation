@@ -1,5 +1,0 @@
-    
-Scenario('<<Scenario>>',async({I})=>{
-  <<Steps>>
-
-});
