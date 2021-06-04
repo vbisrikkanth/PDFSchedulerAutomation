@@ -1,7 +1,11 @@
 // enable I and another page object
 const { I } = inject();
+const {decrypt } = require('../crypto');
 
-
+const hash = {
+  iv: 'eda4cb51651f32bb4ce19e2c1a69fe62',
+  content: '4bc970d61fe26f3dc9b7ce4aa7fdf93f'
+};
 
 module.exports = {
   signInMicrosoftlabel: '//span[contains(text(),"Sign in with Microsoft")]',
@@ -9,7 +13,7 @@ module.exports = {
   proceedlink: '//a[@id="proceed-link"]',
   inputemail: '//input[@type="email"]',
   inputpassword: '//input[@type="password"]',
-  newSchedule: '//button[contains(text(),"New Schedule")]',
+  newSchedule: '//button[contains(text(),"New Schedule")]',  
 
   async loginInPDFScheduler()
     {
@@ -29,7 +33,7 @@ module.exports = {
       await I.click('Next');
       await I.wait(5);
       await I.waitForVisible(this.inputpassword,process.env.WAIT_LONG);
-      await I.fillField(this.inputpassword,secret(process.env.ADMIN_PASSWORD));
+      await I.fillField(this.inputpassword,secret(await decrypt(hash)));
       await I.click('Sign in');
       await I.wait(5);
       await I.click('Yes');

@@ -24,6 +24,7 @@
     "codeceptjs-assert": "0.0.4",
     "codeceptjs-resemblehelper": "^1.9.3",
     "create-codeceptjs": "^0.1.8",
+    "crypto": "^1.0.1",
     "file-saver": "^2.0.5",
     "merge-img": "^2.1.3",
     "path": "^0.12.7",
