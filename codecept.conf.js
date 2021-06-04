@@ -20,7 +20,7 @@ const host = 'http://13.90.249.161/#/login';
 //setWindowSize(1366,784);
 //setWindowSize('maximize',1200);
 exports.config = {
- tests: 'Tests/17052021125150/login_test.js',
+ tests: 'Tests/17052021125150/smokeTest.js',
  multiple: {
   parallel: {
     chunks: 2,
@@ -53,19 +53,21 @@ exports.config = {
       browser: 'chromium',
       disableScreenshots: false,
       fullPageScreenshots: true,
+      waitForNavigation:'networkidle0' ,
+      waitForAction: 1000,
     },
     MyPlaywright: {
       require: './helpers/myplaywright_helper.js',
     },
-    AssertWrapper: {
-      "require": "codeceptjs-assert"
-    },
-    ResembleHelper: {
-      "require": "codeceptjs-resemblehelper",
-      "screenshotFolder": "./tests/output/",
-      "baseFolder": "./tests/screenshots/base/",
-      "diffFolder": "./tests/screenshots/diff/"
-    },
+    // AssertWrapper: {
+    //   "require": "codeceptjs-assert"
+    // },
+    // ResembleHelper: {
+    //   "require": "codeceptjs-resemblehelper",
+    //   "screenshotFolder": "./tests/output/",
+    //   "baseFolder": "./tests/screenshots/base/",
+    //   "diffFolder": "./tests/screenshots/diff/"
+    // },
     
   },
   include: {
@@ -95,6 +97,11 @@ exports.config = {
     stepByStepReport: {
       //enabled: true,
       //screenshotsForAllureReport: true,
+    },
+    
+    autoDelay: {
+        enabled: true,
+        delayBefore:'500'
     },
    
   }

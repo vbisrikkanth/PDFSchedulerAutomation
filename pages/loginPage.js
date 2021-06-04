@@ -17,11 +17,9 @@ module.exports = {
       await I.amOnPage(process.env.BASE_URL);
       await I.wait(10);
       await I.waitForText('Sign in with Microsoft');
-       
       await I.click(this.signInMicrosoftlabel);    
       await I.wait(5);
       await I.switchToNextTab();
-     
       await I.waitForVisible(this.advancedbutton,process.env.WAIT_LONG);
       await I.click(this.advancedbutton);
       
@@ -36,8 +34,8 @@ module.exports = {
       await I.wait(5);
       await I.click('Yes');
       await I.switchToPreviousTab();
-      await I.waitForVisible(this.newSchedule, process.env.WAIT_LONG); 
-      await I.storescreenshot('Login');
+      // await I.waitForVisible(this.newSchedule, process.env.WAIT_LONG); 
+      // await I.storescreenshot('Login');
     },
 
 
