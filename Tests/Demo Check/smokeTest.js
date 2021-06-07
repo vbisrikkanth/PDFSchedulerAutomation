@@ -26,6 +26,7 @@ Scenario('TC01_Validate_Login', async({I}) => {
 	session('valqtestuserSession', async() => {
 		log.info('TC01_Validate_Login in valqtestuserSession started')
 		log.info('Hi Hello Success')
+		console.log('Test Passed ')
 		//await I.storescreenshot('SchedulePage')
 
 	});
