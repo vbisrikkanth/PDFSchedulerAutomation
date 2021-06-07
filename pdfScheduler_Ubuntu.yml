@@ -8,7 +8,6 @@ trigger:
 
 pool:
    vmImage: 'ubuntu-latest'
-   #vmImage: 'windows-2019'
 
 steps:
 - task: NodeTool@0
@@ -24,14 +23,13 @@ steps:
 - script: | 
     npm install
     npx codeceptjs init
-    npm install  allure-commandline --save-dev  
 
-  displayName: 'Install npm, testcafe and allure'
+  displayName: 'Install npm, codecept'
 
 
 - script: |
     npm install        
-    npx codeceptjs  run -c codecept.conf.js --plugins allure
+    npx codeceptjs  run -c codecept.conf.js 
     
   displayName: 'Run Tests'
 
