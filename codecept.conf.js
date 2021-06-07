@@ -20,7 +20,7 @@ const host = 'http://13.90.249.161/#/login';
 //setWindowSize(1366,784);
 //setWindowSize('maximize',1200);
 exports.config = {
- tests: 'Tests/17052021125150/smokeTest.js',
+ tests: 'Tests/Demo Check/smokeTest.js',
  multiple: {
   parallel: {
     chunks: 2,
