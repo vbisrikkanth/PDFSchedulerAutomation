@@ -8,31 +8,6 @@ const webAction = require('../../utils/webUtils')
 
 Feature('Smoke_Demo');
 
-BeforeSuite(async({
-	I
-}) => {
-
-})
-
-
-AfterSuite(async({
-	I
-}) => {
-
-});
-
-Before(async({
-	I
-}) => {
-
-
-})
-After(async({
-	I
-}) => {
-
-
-})
 
 var TestName;
 var FeatureName;

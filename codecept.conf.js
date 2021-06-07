@@ -16,7 +16,7 @@ const host = 'http://13.90.249.161/#/login';
 
 // turn on headless mode when running with HEADLESS=true environment variable
 // export HEADLESS=true && npx codeceptjs run
-//setHeadlessWhen(process.env.HEADLESS);
+setHeadlessWhen(true);
 //setWindowSize(1366,784);
 //setWindowSize('maximize',1200);
 exports.config = {
