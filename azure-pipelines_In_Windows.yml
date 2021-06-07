@@ -7,11 +7,6 @@ steps:
     inputs:
       versionSpec: 12.x
     displayName: Install Node.js
-  - powershell: >
-      $Path = $env:TEMP; $Installer = "chrome_installer.exe"; Invoke-WebRequest
-      "http://dl.google.com/chrome/install/375.126/chrome_installer.exe"
-      -OutFile $Path\$Installer; Start-Process -FilePath $Path\$Installer -Args
-      "/silent /install" -Verb RunAs -Wait; Remove-Item $Path\$Installer
   - script: |
       npm install
       npm install codeceptjs playwright --save
@@ -23,7 +18,7 @@ steps:
   - task: PublishTestResults@2
     inputs:
       testResultsFormat: JUnit
-      testResultsFiles: '**/TEST-*.xml'
+      testResultsFiles: '**/TEST_1Windows.xml'
       mergeTestResults: true
       failTaskOnFailedTests: true
       testRunTitle: TestResults
