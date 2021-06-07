@@ -22,8 +22,7 @@ steps:
   
 - script: | 
     npm install
-    npx codeceptjs init
-
+    npm install codeceptjs playwright --save
   displayName: 'Install npm, codecept'
 
 
