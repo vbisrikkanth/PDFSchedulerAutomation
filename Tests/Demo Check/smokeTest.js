@@ -5,7 +5,6 @@ const fs = require('fs');
 const path =require('path');
 const schedulePage = require('../../pages/schedulesPage')
 const webAction = require('../../utils/webUtils')
-
 Feature('Smoke_Demo');
 
 
@@ -23,10 +22,14 @@ event.dispatcher.on(event.suite.before, async(suite) => {
 
 
 Scenario('TC01_Validate_Login', async({I}) => {
+
+	console.log($(os))
+
 	session('valqtestuserSession', async() => {
 		log.info('TC01_Validate_Login in valqtestuserSession started')
 		log.info('Hi Hello Success')
 		console.log('Test Passed ')
+		
 		//await I.storescreenshot('SchedulePage')
 
 	});
