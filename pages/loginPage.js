@@ -17,6 +17,7 @@ module.exports = {
 
   async loginInPDFScheduler()
     {
+      
       await I.say('I navigate to application base URL'); 
       await I.amOnPage(process.env.BASE_URL);
       await I.wait(10);
@@ -33,7 +34,7 @@ module.exports = {
       await I.click('Next');
       await I.wait(5);
       await I.waitForVisible(this.inputpassword,process.env.WAIT_LONG);
-      await I.fillField(this.inputpassword,secret(await decrypt(hash)));
+      await I.fillField(this.inputpassword,secret(process.argv[4]));
       await I.click('Sign in');
       await I.wait(5);
       await I.click('Yes');

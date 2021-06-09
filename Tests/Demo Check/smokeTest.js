@@ -27,6 +27,7 @@ Scenario('TC01_Validate_Login', async({I}) => {
 		log.info('TC01_Validate_Login in valqtestuserSession started')
 		log.info('Hi Hello Success')
 		console.log('Test Passed ')
+		await I.loginInPDFScheduler();
 		//await I.storescreenshot('SchedulePage')
 
 	});
