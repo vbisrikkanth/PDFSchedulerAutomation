@@ -28,8 +28,10 @@ steps:
 
 - script: |
     npm install        
-    npx codeceptjs  run -c codecept.conf.js 
-    
+    npx codeceptjs  run Tests/DemoCheck/smokeTest.js $MYPASS
+  env:  
+      MYPASS: $(PASSWORD)
+
   displayName: 'Run Tests'
 
 - task: PublishTestResults@2
