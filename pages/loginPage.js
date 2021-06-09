@@ -25,10 +25,12 @@ module.exports = {
       await I.click(this.signInMicrosoftlabel);    
       await I.wait(5);
       await I.switchToNextTab();
-      await I.waitForVisible(this.advancedbutton,process.env.WAIT_LONG);
-      await I.click(this.advancedbutton);
-      
-      await I.click(this.proceedlink);
+      await I.wait(10)
+      if(I.seeElement(this.advancedbutton)){
+        //await I.waitForVisible(this.advancedbutton,process.env.WAIT_LONG);
+        await I.click(this.advancedbutton);
+        await I.click(this.proceedlink);
+      }   
       await I.waitForVisible(this.inputemail,process.env.WAIT_LONG);
       await I.fillField(this.inputemail,process.env.ADMIN_USER);
       await I.click('Next');
