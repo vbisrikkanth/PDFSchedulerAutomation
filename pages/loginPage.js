@@ -26,7 +26,8 @@ module.exports = {
       await I.wait(5);
       await I.switchToNextTab();
       await I.wait(10)
-      if(I.seeElement(this.advancedbutton)){
+      const result = await tryTo(() => this.see(this.advancedbutton));
+      if(result==true){
         //await I.waitForVisible(this.advancedbutton,process.env.WAIT_LONG);
         await I.click(this.advancedbutton);
         await I.click(this.proceedlink);
