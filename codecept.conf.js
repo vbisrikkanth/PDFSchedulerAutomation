@@ -20,7 +20,7 @@ setHeadlessWhen(true);
 //setWindowSize(1366,784);
 //setWindowSize('maximize',1200);
 exports.config = {
- tests: 'Tests/Demo Check/smokeTest.js',
+ tests: 'Tests/DemoCheck/smokeTest.js',
  multiple: {
   parallel: {
     chunks: 2,
