@@ -20,11 +20,15 @@ module.exports = {
       
       await I.say('I navigate to application base URL'); 
       await I.amOnPage(process.env.BASE_URL);
+      let url = await I.grabCurrentUrl();
+      console.log(`Current URL 1 is [${url}]`);
       await I.wait(10);
       await I.waitForText('Sign in with Microsoft');
       await I.click(this.signInMicrosoftlabel);    
       await I.wait(5);
       await I.switchToNextTab();
+      url = await I.grabCurrentUrl();
+      console.log(`Current URL2 is [${url}]`);
       await I.wait(10)
       const result = await tryTo(() => I.see(this.advancedbutton));
       console.log(result)
@@ -34,8 +38,8 @@ module.exports = {
         await I.click(this.advancedbutton);
         await I.click(this.proceedlink);
       }   
-      let url = await I.grabCurrentUrl();
-      console.log(`Current URL is [${url}]`);
+      url = await I.grabCurrentUrl();
+      console.log(`Current URL3 is [${url}]`);
       await I.waitForVisible(this.inputemail,process.env.WAIT_LONG);
       await I.fillField(this.inputemail,process.env.ADMIN_USER);
       await I.click('Next');
