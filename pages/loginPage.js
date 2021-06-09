@@ -28,11 +28,14 @@ module.exports = {
       await I.wait(10)
       const result = await tryTo(() => I.see(this.advancedbutton));
       console.log(result)
+      
       if(result==true){
         //await I.waitForVisible(this.advancedbutton,process.env.WAIT_LONG);
         await I.click(this.advancedbutton);
         await I.click(this.proceedlink);
       }   
+      let url = await I.grabCurrentUrl();
+      console.log(`Current URL is [${url}]`);
       await I.waitForVisible(this.inputemail,process.env.WAIT_LONG);
       await I.fillField(this.inputemail,process.env.ADMIN_USER);
       await I.click('Next');
