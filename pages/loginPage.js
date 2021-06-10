@@ -26,18 +26,18 @@ module.exports = {
       await I.waitForText('Sign in with Microsoft');
       await I.click(this.signInMicrosoftlabel);    
       await I.wait(5);
-      await I.switchToNextTab();
+      await I.switchToNextTab(1);
       url = await I.grabCurrentUrl();
       console.log(`Current URL2 is [${url}]`);
-      await I.wait(10)
-      const result = await tryTo(() => I.see(this.advancedbutton));
-      console.log(result)
+     // await I.wait(10)
+      //const result = await tryTo(() => I.see(this.advancedbutton));
+      //console.log(result)
       
-      if(result==true){
+      //if(result==true){
         //await I.waitForVisible(this.advancedbutton,process.env.WAIT_LONG);
-        await I.click(this.advancedbutton);
-        await I.click(this.proceedlink);
-      }   
+        // await I.click(this.advancedbutton);
+        // await I.click(this.proceedlink);
+      //}   
       url = await I.grabCurrentUrl();
       console.log(`Current URL3 is [${url}]`);
       await I.waitForVisible(this.inputemail,process.env.WAIT_LONG);
@@ -45,7 +45,7 @@ module.exports = {
       await I.click('Next');
       await I.wait(5);
       await I.waitForVisible(this.inputpassword,process.env.WAIT_LONG);
-      await I.fillField(this.inputpassword,secret(process.argv[4]));
+      await I.fillField(this.inputpassword,secret(await decrypt(hash)));
       await I.click('Sign in');
       await I.wait(5);
       await I.click('Yes');

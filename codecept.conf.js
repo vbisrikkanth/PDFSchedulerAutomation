@@ -20,7 +20,7 @@ setHeadlessWhen(true);
 //setWindowSize(1366,784);
 //setWindowSize('maximize',1200);
 exports.config = {
- tests: 'Tests/DemoCheck/smokeTest.js',
+ tests: 'Tests/ParallelTest/*.js',
  multiple: {
   parallel: {
     chunks: 2,
@@ -49,12 +49,19 @@ exports.config = {
   helpers: {
     Playwright: {
       url: host,
-      show: true,
+      show: false,
       browser: 'chromium',
       disableScreenshots: false,
       fullPageScreenshots: true,
       waitForNavigation:'networkidle0' ,
       waitForAction: 1000,
+      chromium: {
+        headless: true,
+        args: [
+            `--window-size=1280,609`,
+            '--ignore-certificate-errors',
+        ],
+    }
     },
     MyPlaywright: {
       require: './helpers/myplaywright_helper.js',

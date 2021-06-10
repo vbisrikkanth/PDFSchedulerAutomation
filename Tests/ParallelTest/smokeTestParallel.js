@@ -39,8 +39,8 @@ After(async ({I})=>{
     })
 
 
-Scenario('1705_TC01_Validate_Login', async({ I }) => {
-    session('valqtestuserSession',async () => {
+Scenario('parallel_TC01_Validate_Login', async({ I }) => {
+    
         log.info('TC01_Validate_Login in valqtestuserSession started')
         await I.loginInPDFScheduler();
         await I.waitForVisible(schedulePage.selectWorkspace,process.env.WAIT_LONG)
@@ -48,11 +48,11 @@ Scenario('1705_TC01_Validate_Login', async({ I }) => {
         await I.seeElement(schedulePage.scheduleTitle)
         //await I.storescreenshot('SchedulePage')
         
-    });
+    
 });
 
-Scenario('1705_TC02_Validate_AllSideMenuIsClickable', async({ I }) => {
-    session('valqtestuserSession',async () => {
+Scenario('parallel_TC02_Validate_AllSideMenuIsClickable', async({ I }) => {
+    
         log.info('TC02_Validate_AllSideMenuIsClickable in valqtestuserSession started')
         await I.loginInPDFScheduler();
         await I.waitForVisible(schedulePage.selectWorkspace,process.env.WAIT_LONG)
@@ -72,11 +72,11 @@ Scenario('1705_TC02_Validate_AllSideMenuIsClickable', async({ I }) => {
         await schedulePage.chooseFromSideMenuInDashboard('Settings')
         //await I.storescreenshot('SettingsPage')
         await I.seeElement(schedulePage.userTitleh2)
-    });
+    
 });
 
-Scenario('1705_TC03_SortingInSchedulePage', async({ I }) => {
-    session('valqtestuserSession',async () => {
+Scenario('parallel_TC03_SortingInSchedulePage', async({ I }) => {
+    
         log.info('TC03_SortingInSchedulePage in valqtestuserSession started')
         await I.loginInPDFScheduler();
         await I.waitForVisible(schedulePage.selectWorkspace,process.env.WAIT_LONG)
@@ -111,11 +111,11 @@ Scenario('1705_TC03_SortingInSchedulePage', async({ I }) => {
         await schedulePage.clickTableTitles('STATUS')
         
 
-    });
+    
 });
 
-Scenario('1705_TC04_AddANewSchedule', async({ I }) => {
-    session('valqtestuserSession',async () => {
+Scenario('parallel_TC04_AddANewSchedule', async({ I }) => {
+    
         log.info('TC04_SearchingInSchedulePage in valqtestuserSession started')
         await I.loginInPDFScheduler();
         await I.waitForVisible(schedulePage.selectWorkspace,process.env.WAIT_LONG)
@@ -130,5 +130,5 @@ Scenario('1705_TC04_AddANewSchedule', async({ I }) => {
         await schedulePage.enterEmailSubject('HIIIII')
         await schedulePage.enterEmailBody('Welcomeeee')
         //await I.storescreenshot('BulkUpload');
-    });
+    
 });

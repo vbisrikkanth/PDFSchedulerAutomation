@@ -47,7 +47,7 @@ event.dispatcher.on(event.suite.before, async(suite) => {
 })
 
 
-Scenario('TC01_Validate_Login', async({I}) => {
+Scenario('1805_TC01_Validate_Login', async({I}) => {
 	session('valqtestuserSession', async() => {
 		log.info('TC01_Validate_Login in valqtestuserSession started')
 		await I.loginInPDFScheduler();
@@ -59,7 +59,7 @@ Scenario('TC01_Validate_Login', async({I}) => {
 	});
 });
 
-Scenario('TC02_Validate_AllSideMenuIsClickable', async({I}) => {
+Scenario('1805_TC02_Validate_AllSideMenuIsClickable', async({I}) => {
 	session('valqtestuserSession', async() => {
 		log.info('TC02_Validate_AllSideMenuIsClickable in valqtestuserSession started')
 		await I.loginInPDFScheduler();
@@ -83,7 +83,7 @@ Scenario('TC02_Validate_AllSideMenuIsClickable', async({I}) => {
 	});
 });
 
-Scenario('TC03_SortingInSchedulePage', async({I}) => {
+Scenario('1805_TC03_SortingInSchedulePage', async({I}) => {
 	session('valqtestuserSession', async() => {
 		log.info('TC03_SortingInSchedulePage in valqtestuserSession started')
 		await I.loginInPDFScheduler();
@@ -122,7 +122,7 @@ Scenario('TC03_SortingInSchedulePage', async({I}) => {
 	});
 });
 
-Scenario('TC04_AddANewSchedule', async({I}) => {
+Scenario('1805_TC04_AddANewSchedule', async({I}) => {
 	session('valqtestuserSession', async() => {
 		log.info('TC04_SearchingInSchedulePage in valqtestuserSession started')
 		await I.loginInPDFScheduler();
