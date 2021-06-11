@@ -12,7 +12,7 @@ async function stopServer() {
   // and stop server too
 }
 
-const host = 'http://13.90.249.161/#/login';
+const host = 'http://localhost/#/login';
 
 // turn on headless mode when running with HEADLESS=true environment variable
 // export HEADLESS=true && npx codeceptjs run
@@ -20,7 +20,7 @@ setHeadlessWhen(true);
 //setWindowSize(1366,784);
 //setWindowSize('maximize',1200);
 exports.config = {
- tests: 'Tests/ParallelTest/*.js',
+ tests: 'Tests/DemoCheck/*.js',
  multiple: {
   parallel: {
     chunks: 2,

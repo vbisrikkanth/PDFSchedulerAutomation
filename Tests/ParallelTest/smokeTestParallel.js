@@ -6,7 +6,7 @@ const path =require('path');
 const schedulePage = require('../../pages/schedulesPage')
 const webAction = require('../../utils/webUtils')
 
-Feature('Smoke1');
+Feature('Smoke1_PArallelCheck');
 
 BeforeSuite(async ({ I }) => {
   
