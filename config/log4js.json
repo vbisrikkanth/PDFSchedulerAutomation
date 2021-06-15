@@ -8,7 +8,7 @@
     "file" : {
         "category": "test-file-appender",
         "type": "file",
-        "filename": "log/xvizPerformanceSuite.log",
+        "filename": "log/InfoRiverPDFSchedulerAutomation.log",
         "maxLogSize": 20971520,
         "backups": 3,
         "flag" : "a",
