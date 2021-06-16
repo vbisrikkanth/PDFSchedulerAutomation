@@ -14,6 +14,7 @@ module.exports = {
   inputemail: '//input[@type="email"]',
   inputpassword: '//input[@type="password"]',
   newSchedule: '//button[contains(text(),"New Schedule")]',  
+   
 
   async loginInPDFScheduler()
     {
@@ -54,5 +55,7 @@ module.exports = {
       // await I.storescreenshot('Login');
     },
 
+  
+    
 
 }

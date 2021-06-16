@@ -29,7 +29,7 @@ Scenario('demo_TC01_Validate_Login', async({I}) => {
 		
 		await I.loginInPDFScheduler();
 		//await I.storescreenshot('SchedulePage')
-		console.log('Test Passed ')
+		//console.log('Test Passed ')
 	});
 });
 
