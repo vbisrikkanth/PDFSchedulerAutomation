@@ -13,50 +13,9 @@ async function stopServer() {
   // and stop server too
 }
 
-async function addDBRecords(){
-  
-  let requestDatas = await updateValQTestUser()
-  const getres = (requestDatas) =>
-		new Promise((resolve, reject) => {
-			request(requestDatas, function (error, response) {
-				if (error) {throw new Error(error) 
-				reject('IncompleteResponse')}
-				else{
-					log.info('successful response body : '+response.body)
-					//console.log('Actual file created')
-					resolve('DONE')}                
-			})
-		});  
-	log.info('Starting API Call ....')  
-	const result = await getres(requestDatas)
-	log.info('response from API is ======>'+result)
-	if (result === 'DONE') {
-		log.info("Updated DB Records Successfully ....")
-	} 
-  else {
-		log.error("Updation failed !")
-    assert.strictEqual(true,false,'Test failed since DB connection failed ')
-	}
-}
 
-async function updateValQTestUser(){
-  var request = {
-    'method': 'POST',
-		'url': 'http://localhost:12000/v1/backdoor/tenant/',
-    'headers': {
-      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInNjb3BlIjp7ImJhY2tkb29yIjp0cnVlfSwicm9sZXMiOltdLCJpc0JhY2tEb29yIjp0cnVlLCJpYXQiOjE2MDkxNjQyNjUsImV4cCI6MjQ3MzE2NDI2NX0.O5Jdy-j_9tEdLQXgUDrhyVfboevLfHSWl313oTZXC3s',
-      'Content-Type' : 'application/json'
-    },
-    "name": "ValQ Test User",
-    "domain": "visualbi.com",
-    "adminEmail": "valqTestUser@visualbi.com",
-    "billingEmail": "valqTestUser@visualbi.com",
-    "adminFullName": "ValQ Test User",
-    "billingFullName": "ValQ Test User",
-    "licenseMeta": {}
-  }
-  return request
-}
+
+
 
 const host = 'http://localhost/#/login';
 
@@ -78,7 +37,6 @@ exports.config = {
     await startServer();
     if(process.env.AD_DB_Records=='Y'){
       log.info('Inside bootstrap')
-      await addDBRecords();
     }    
   },
 

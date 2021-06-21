@@ -5,6 +5,7 @@ const {
 const log = require('../config/logging').default;
 const webAction = require('../utils/webUtils')
 var assert = require('assert');
+var request = require('request');
 module.exports = {
   newSchedulebtn: '//button[contains(text(),"New Schedule")]',
   editschedulename: '//h2[text()="Untitled"]//parent::div//following-sibling::div/div[@class="cursor-pointer"]',
@@ -205,6 +206,109 @@ module.exports = {
     // await I.clickbutton();
     // await I.storescreenshot('BulkUpload');
   },
+  
+  async addDBRecords(){
+  
+    let requestDatas = await this.updateValQTestUser()
+    const getres = (requestDatas) =>
+      new Promise((resolve, reject) => {
+        request(requestDatas, function (error, response) {
+          if (error) {throw new Error(error) 
+          reject('IncompleteResponse')}
+          else{
+            log.info('successful response body : '+response.body)
+            //console.log('Actual file created')
+            resolve('DONE')}                
+        })
+      });  
+    log.info('Starting API Call ....')  
+    const result = await getres(requestDatas)
+    log.info('response from API is ======>'+result)
+    if (result === 'DONE') {
+      log.info("Updated DB Records Successfully ....")
+    } 
+    else {
+      log.error("Updation failed !")
+      assert.strictEqual(true,false,'Test failed since DB connection failed ')
+    }
+  },
+
+  async  updateValQTestUser(){
+    var request = {
+      'method': 'POST',
+      'url': 'http://localhost:12000/v1/backdoor/tenant/',
+      'headers': {
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInNjb3BlIjp7ImJhY2tkb29yIjp0cnVlfSwicm9sZXMiOltdLCJpc0JhY2tEb29yIjp0cnVlLCJpYXQiOjE2MDkxNjQyNjUsImV4cCI6MjQ3MzE2NDI2NX0.O5Jdy-j_9tEdLQXgUDrhyVfboevLfHSWl313oTZXC3s',
+        'Content-Type' : 'application/json'
+      },
+      body: JSON.stringify({
+        "name": "ValQ Test User",
+        "domain": "visualbi.com",
+        "adminEmail": "valqTestUser@visualbi.com",
+        "billingEmail": "valqTestUser@visualbi.com",
+        "adminFullName": "ValQ Test User",
+        "billingFullName": "ValQ Test User",
+        "licenseMeta": {
+          "order_id": 7429,
+          "user": "ValQ Test User",
+          "email": "valqTestUser@visualbi.com",
+          "plan": "enterprise",
+          "plan_details": {
+            "name": "en100",
+            "nice_name": "Enterprise"
+          },
+          "trial": "no",
+          "expInDate": "2021-04-28",
+          "version": "1.6.3",
+          "users_limit": "50",
+          "workspaces_limit": "1",
+          "features": {
+            "numOfNodes": 10000,
+            "branding": 0,
+            "customBranding": 1,
+            "numOfNodesTreeVisual": 10000,
+            "businessModeling": 1,
+            "basicFunctions": 1,
+            "simulation": 2147483647,
+            "comparisonSeries": 1,
+            "scenarios": 2147483647,
+            "advancedFunctions": 1,
+            "compositeNodes": 1,
+            "secondaryKPIs": 1,
+            "scenariosExport": 1,
+            "writeBackAPI": 1,
+            "planningNotes": 1,
+            "budgeting": 1,
+            "planningAdditionalSeries": 1,
+            "allocation": 1,
+            "varianceAnalysis": 1,
+            "comments": 1,
+            "modelSync": 1,
+            "auditLog": 1,
+            "webDataSource": 1,
+            "scenarioCollaboration": 1,
+            "sensitivityAnalysis": 1,
+            "timeSeriesForecasting": 1,
+            "modelMergeCollaboration": 1,
+            "privateTenant": 1,
+            "conditionalFormatting": 1,
+            "support": "https://valq.com/email-support.html",
+            "planningSeriesCount": 99999,
+            "timeseriesForecastFeatures": 3,
+            "presentationMode": 1,
+            "scenarioAsADataSeries": 1,
+            "planningSeriesCollaboration": 1,
+            "readMode": 1,
+            "security": 1
+          },
+          "apiVersion": "v1",
+          "dateIssued": 1588062608,
+          "expiry": 1619560800
+        }
+      })
+    }
+    return request
+  }
 
 
 }
