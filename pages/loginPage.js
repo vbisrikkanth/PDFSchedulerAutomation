@@ -19,8 +19,13 @@ module.exports = {
   async loginInPDFScheduler()
     {
       
-      await I.say('I navigate to application base URL'); 
-      await I.amOnPage(process.env.BASE_URL);
+      await I.say('I navigate to application base URL');
+      if(process.env.DOCKER == 'Y') {
+        await I.amOnPage(process.env.BASE_URL);
+      }
+      else {
+        await I.amOnPage('http://13.90.249.161/#/login')
+      }
       let url = await I.grabCurrentUrl();
       console.log(`Current URL 1 is [${url}]`);
       await I.wait(10);
