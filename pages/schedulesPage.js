@@ -206,6 +206,7 @@ module.exports = {
     // await I.clickbutton();
     // await I.storescreenshot('BulkUpload');
   },
+
   async addDBRecords(){
   
     let requestDatas = await this.updateValQTestUser()

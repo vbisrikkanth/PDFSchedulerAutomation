@@ -27,14 +27,21 @@ event.dispatcher.on(event.suite.before, async(suite) => {
 Scenario('demo_TC01_Validate_Login', async({I}) => {
 	session('valqtestuserSession', async() => {
 
+
+		await schedulePage.addDBRecords()
+
 		if(process.env.AD_DB_Records == 'Y'){
 			await schedulePage.addDBRecords()
 		}
-		
+
 		log.info('TC01_Validate_Login in valqtestuserSession started')
 		log.info('Hi Hello Success')
 		await I.loginInPDFScheduler();
-		
+
+		//await I.storescreenshot('SchedulePage')
+		//console.log('Test Passed ')
+
+
 	});
 });
 

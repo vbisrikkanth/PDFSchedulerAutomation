@@ -21,6 +21,7 @@
     "@codeceptjs/configure": "^0.6.2",
     "@codeceptjs/ui": "^0.4.3",
     "allure": "0.0.0",
+    "allure-commandline": "^2.13.8",
     "codeceptjs-assert": "0.0.4",
     "codeceptjs-resemblehelper": "^1.9.3",
     "create-codeceptjs": "^0.1.8",
