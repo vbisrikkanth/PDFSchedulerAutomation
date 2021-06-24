@@ -78,22 +78,6 @@ module.exports = {
     log.info('Method Ended : selectRadioButton')
   },
   
-  async getTotalTableRow(){
-
-  },
-
-  async getTotalTableColumn(){
-
-  },
-
-  async getCellDataFromTableUsingRowAndColumn(){
-
-  },
-
-  async getCellDataFromTableUsingRowAndColumnLabel(){
-
-  },
-
   async getTextValueFromElement(element){
     log.info('Method Started : getTextValueFromElement')
     try{

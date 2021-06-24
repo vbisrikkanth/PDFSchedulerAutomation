@@ -1,6 +1,53 @@
-version: '2'
+version: '3.3'
 services:
+  db:
+    image: 'postgres:12'
+    volumes:
+      - 'app-db-data:/var/lib/postgresql/data/pgdata'
+    env_file:
+      - .env
+    environment:
+      - PGDATA=/var/lib/postgresql/data/pgdata
+  queue:
+    image: 'redis:latest'
+  api:
+    image: 'turing.azurecr.io/turing-api:development'
+    depends_on:
+      - db
+    env_file:
+      - .env
+    environment:
+      - PORT=12000
+      - TEMPLATE_CLIENT_PROTOCOL=http
+      - TEMPLATE_CLIENT_URL=localhost
+      - TEMPLATE_CLIENT_PORT=80
+    ports:
+      - '12000:12000'
+  web:
+    image: 'turing.azurecr.io/turing-app:development'
+    depends_on:
+      - api
+    environment:
+      - APP_PORT=12000
+      - 'BASE_URL=http://localhost/#/login'
+    ports:
+      - '80:80'
+      - '443:443'
   codeceptjs:
     image: codeceptjs/codeceptjs
+    network_mode: host
+    depends_on: 
+      - web
     volumes:
-      - .:/tests
+      - '.:/tests'
+    
+  turing-worker:
+    image: 'turing.azurecr.io/turing-worker:development'
+    env_file:
+      - .env
+  turing-orchestrator:
+    image: 'turing.azurecr.io/turing-orchestrator:development'
+    env_file:
+      - .env
+volumes:
+  app-db-data: null
